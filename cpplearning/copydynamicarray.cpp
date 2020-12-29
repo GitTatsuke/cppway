@@ -1,4 +1,5 @@
 #include <iostream>
+//#define MAIN
 using namespace std;
 
 
@@ -19,7 +20,7 @@ void ShowArray(const int* const arr, const int size)
 	cout << endl;
 }
 
-
+#ifdef MAIN
 void main() 
 {
 	const int SIZE = 10;
@@ -49,3 +50,4 @@ void main()
 	delete[]firstArray;
 	delete[]secondArray;
 }
+#endif
