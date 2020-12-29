@@ -43,14 +43,15 @@ public:
 		id = Count;
 	}
 
-	static int Count;
+
 
 	int getId() { return id; }
-
+	static int getCount() { return Count; }
 private:
 	int weight;
 	string color;
 	int id;
+	static int Count;
 };
 
 void Human::TakeApple(Apple& apple)
@@ -108,7 +109,7 @@ int main()
 {
 
 
-	Point Position(4,2,3);
+	/*Point Position(4,2,3);
 
 	Position.setX(5);
 	Position.setY(1);
@@ -118,7 +119,7 @@ int main()
 	cout << Position.getY() << endl;
 	cout << Position.getZ() << endl;
 	NEXT
-	Position.printParams();
+	Position.printParams();*/
 
 	Apple apple(150, "red");
 	Apple apple2(120, "red");
@@ -133,8 +134,8 @@ int main()
 	NEXT
 	cout << "Apple id: " << apple3.getId() << endl;
 	Eugene.TakeApple(apple3);
-
-
+	NEXT
+	cout << "Total: " << Apple::getCount() << endl;
 
 
 	return 0;
