@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="classes.cpp" />
     <ClCompile Include="copydynamicarray.cpp" />
+    <ClCompile Include="String.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

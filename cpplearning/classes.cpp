@@ -4,6 +4,9 @@
 #define MAIN
 using namespace std;
 
+class Human;
+class Apple;
+
 class Human 
 {
 public:
@@ -21,7 +24,41 @@ public:
 		cout << name << endl;
 		cout << weight << endl;
 	}
+
+	void TakeApple(Apple& apple);
+	void EatApple(Apple& apple) {
+
+	}
 };
+
+
+class Apple 
+{
+	friend Human;
+public:
+	Apple(int weight, string color) {
+		this->weight = weight;
+		this->color = color;
+		Count++;
+		id = Count;
+	}
+
+	static int Count;
+
+	int getId() { return id; }
+
+private:
+	int weight;
+	string color;
+	int id;
+};
+
+void Human::TakeApple(Apple& apple)
+{
+	cout << "Apple weight = " << apple.weight << "\n" << "Apple color = " << apple.color << endl;
+}
+int Apple::Count = 0;
+
 
 class Point 
 {
@@ -33,15 +70,10 @@ private:
 	int y;
 
 public:
-
-	Point(int valueX, int valueY, int valueZ) {
-		x = valueX;
-		y = valueY;
-		z = valueZ;
-	}
+	Point(int valueX, int valueY, int valueZ);
 	Point() {}
 
-
+	void printParams();
 
 	int getX() { return x; }
 	int getY() { return y; }
@@ -55,6 +87,20 @@ public:
 
 	}
 };
+Point::Point(int valueX, int valueY, int valueZ) {
+	x = valueX;
+	y = valueY;
+	z = valueZ;
+}
+
+void Point::printParams() {
+	cout << "x = " << this->x << endl;
+	cout << "y = " << this->y << endl;
+	cout << "z = " << this->z << endl;
+}
+
+
+
 
 
 #ifdef MAIN
@@ -71,6 +117,24 @@ int main()
 	cout << Position.getX() << endl;
 	cout << Position.getY() << endl;
 	cout << Position.getZ() << endl;
+	NEXT
+	Position.printParams();
+
+	Apple apple(150, "red");
+	Apple apple2(120, "red");
+	Apple apple3(1540, "red");
+	Human Eugene;
+	NEXT
+	cout << "Apple id: " << apple.getId() << endl;
+	Eugene.TakeApple(apple);
+	NEXT
+	cout << "Apple id: " << apple2.getId() << endl;
+	Eugene.TakeApple(apple2);
+	NEXT
+	cout << "Apple id: " << apple3.getId() << endl;
+	Eugene.TakeApple(apple3);
+
+
 
 
 	return 0;
